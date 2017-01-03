@@ -6,5 +6,5 @@ mount --make-shared /mnt/mp3
 
 docker run --rm -t -i --cap-add mknod --cap-add sys_admin --device=/dev/fuse \
     -v /path/to/flac/:/input \
-    -v /mnt/mp3:/output \
-    dartagan/mp3fs -f /input /output
+    -v /mnt/mp3:/output:shared \
+    dartagan/mp3fs -f -o allow_other,ro /input /output
